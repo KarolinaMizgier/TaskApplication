@@ -1,0 +1,23 @@
+{
+   "carName":"Suv",
+   "catBrand":"BMW",
+   "seats":[
+      {
+         "material":"leather",
+         "color":"white"
+      },
+      {
+         "material":"leather",
+         "color":"black"
+      },
+      {
+         "material":"leather",
+         "color":"black"
+      },
+      {
+         "material":"leather",
+         "color":"white"
+      }
+   ],
+   "engineCapacity":3000
+}
