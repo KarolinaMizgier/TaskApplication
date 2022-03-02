@@ -20,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class TaskController {
 
     private final DbService service;
@@ -30,8 +31,7 @@ public class TaskController {
         List<Task> tasks = service.getAllTasks();
         return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
     }
-
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/createTask",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);
