@@ -55,6 +55,4 @@ public class TaskController {
         Task savedTask = service.saveTask(task);
         return ResponseEntity.ok(taskMapper.mapToTaskDto(savedTask));
     }
-
-
 }
