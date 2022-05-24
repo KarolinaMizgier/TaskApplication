@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/tasks")
+@RequestMapping("v1/tasks")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class TaskController {
@@ -31,11 +31,10 @@ public class TaskController {
         List<Task> tasks = service.getAllTasks();
         return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
     }
-    @PostMapping(path = "/createTask",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto) {
-        Task task = taskMapper.mapToTask(taskDto);
-        service.saveTask(task);
-        return ResponseEntity.ok().build();
+    @PostMapping( "createTask")
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
+        Task task = service.saveTask(taskMapper.mapToTask(taskDto));
+        return ResponseEntity.ok(taskMapper.mapToTaskDto(task));
     }
 
     @GetMapping(value = "{taskId}")
